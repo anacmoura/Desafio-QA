@@ -68,46 +68,18 @@ O foco principal foi testar **Happy Path** das APIs e demonstrar boas práticas 
 * Problema comum em **CI/CD**: o token precisa ser gerado e adicionado automaticamente à requisição, caso contrário os testes falharão..
 
 ## Dicas de uso:
-<<<<<<< HEAD
- **Antes de criar crie um arquivo cypress.env.json**
-=======
-
->>>>>>> 62ff96d8675c2f2d7da303ee1dd9fc5057b81830
 1. Crie um usuário via teste de criação de usuário.
 2. O `userId` será retornado no console. Esse dado, junto com o `userName` e o `password`, deve ser armazenado dentro do arquivo **`cypress.env.json`**, garantindo a **segurança das informações sensíveis**.
 3. O `token` **não deve ser inserido manualmente** no `cypress.env.json`. Ele deve ser gerado dinamicamente através da API de **Generate Token**, usando o `userName` e o `password`.
 4. O arquivo **`cypress.env.json`** é o local adequado para manter informações como `userId`, `userName` e `password`. Isso protege os dados, evita exposição no código e mantém os testes organizados.
-<<<<<<< HEAD
-5. Os testes da api **`rent-book e details user`** precisa de autorização e para isso deve gerar um token e coloca-lo no arquivo cypress.env.json.
 
 👉 Assim, os dados sensíveis ficam **fora dos testes diretos** e seguros no `cypress.env.json`, enquanto o `token` deve ser colocado manualmente cada vez que gera um novo token para os testes **que requer autorização funcionarem** antes da execução dos testes.
 
-## exemplo do cypress.env.json
-Show! No **README**, o ideal é formatar esse exemplo de forma clara, com **bloco de código JSON** em vez de crase simples. Assim ele fica bem exibido no GitHub.
-
-Aqui está a versão ajustada para você colocar no README:
-
----
-
-=======
-
-👉 Assim, os dados sensíveis ficam **fora dos testes diretos** e seguros no `cypress.env.json`, enquanto o `token` deve ser colocado manualmente cada vez que gera um novo token para os testes **que requer autorização funcionarem** antes da execução dos testes.
-
->>>>>>> 62ff96d8675c2f2d7da303ee1dd9fc5057b81830
 ## Exemplo do `cypress.env.json`
 
 ```json
 {
   "baseUrl": "https://demoqa.com/swagger/",
-<<<<<<< HEAD
-  "password": "GYklhprlfg@123",
-  "userId": "922c396f-040f-440b-bc32-0c165c6fc35d",
-  "userName": "Aleen",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFsZWVuIiwicGFzc3dvcmQiOiJHWWtsaHBybGZnQDEyMyIsImlhdCI6MTc1NTU2MTIyNn0.OtWjDx0wpTX1uApFEFCUDF9Bk1vCcIrz3qp1mxPcv-k"
-}
-```
-
-=======
   "password": "Testeg@123",
   "userId": "922c396f-040f....",
   "userName": "Fulano",
@@ -116,7 +88,6 @@ Aqui está a versão ajustada para você colocar no README:
 ```
 
 `
->>>>>>> 62ff96d8675c2f2d7da303ee1dd9fc5057b81830
 ## Ambiente de Testes
 
 * **Navegador**: Microsoft Edge v139
@@ -138,9 +109,5 @@ Aqui está a versão ajustada para você colocar no README:
 * Evitei Page Objects para simplificar, mas organizei **Page Actions** mantendo a reutilização e clareza do código.
 * Tokens expirados podem gerar falhas inesperadas em testes automatizados, especialmente em **CI/CD**.
 
-<<<<<<< HEAD
-### Desafio 2 - Frontend
-=======
 # Desafio  2 - Testes de Frontend 
->>>>>>> 62ff96d8675c2f2d7da303ee1dd9fc5057b81830
 
