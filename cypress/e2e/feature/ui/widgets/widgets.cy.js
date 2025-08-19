@@ -1,8 +1,9 @@
 describe("Progress Bar DemoQA simples", () => {
   beforeEach(() => {
     cy.validateUrl();
-    cy.contains("Widgets").click();
-    cy.contains("Progress Bar").click();
+    
+    cy.contains("Widgets").should('be.visible').click();
+    cy.contains("Progress Bar").should('be.visible').click();
   });
 
   it("Para a barra em 25% e reseta no final", () => {
