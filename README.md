@@ -1,5 +1,4 @@
-# Desafio  1 de Testes de API 
-## Como baixar e rodar o projeto
+# Como baixar e rodar o projeto
 
 Clone este repositório:
 
@@ -111,3 +110,83 @@ O foco principal foi testar **Happy Path** das APIs e demonstrar boas práticas 
 
 # Desafio  2 - Testes de Frontend 
 
+## Ambiente de Teste
+
+* **Navegador**: Microsoft Edge v139
+* **Sistema Operacional**: Windows 11
+* **Cypress**: versão 14.5.0
+---
+
+## Observações Gerais
+
+1. **Instabilidade do site:**
+
+   * O DemoQA apresentou **comportamento instável**, incluindo **erros de JavaScript cross-origin** que não são bugs do teste.
+   * Cypress falha o teste automaticamente ao detectar erros JS na aplicação.
+
+2. **Selectors e elementos dinâmicos:**
+
+   * Alguns elementos possuem **selectores instáveis ou dinâmicos**, dificultando a automação confiável.
+   * Foi necessário adaptar os comandos Cypress para lidar com esses casos.
+
+3. **Cucumber não utilizado:**
+
+   * Optou-se por **não usar Cucumber/BDD no frontend** devido à instabilidade do site.
+   * Arquivos de feature geraram erros e não puderam ser utilizados.
+
+4. **Estruturas condicionais (`if/else`):**
+
+   * Foram utilizadas apenas quando necessário, mas `if/else` não é prática comum em testes automatizados.
+
+5. **Logs e anúncios:**
+
+   * Anúncios e pop-ups afetaram a **legibilidade dos logs** no Cypress, dificultando a identificação de falhas detalhadas.
+
+6. **Erros observados:**
+
+   * **Script error:**
+
+     ```
+     Cypress detected that an uncaught error was thrown from a cross origin script.
+     ```
+
+     * Este erro é originado pelo site DemoQA e não pelo teste.
+
+7. **Teste do drag and drop:**
+
+   *Os testes do drag and drop já estão na ordem crescente no site e o teste pede para por na ordem crescente.
+   link do print: https://jam.dev/c/cbc4fdaf-d1b5-41c6-8cd6-c055e426749c
+---
+
+## Estrutura do teste
+
+Perfeito! Vou atualizar essa parte do README explicando melhor a estrutura do teste em Cypress, incluindo **`describe`**, **`beforeEach`**, **`it`** e **Page Actions**:
+
+---
+
+## Estrutura do teste
+
+* **`describe`**:
+
+  * Agrupa um conjunto de testes relacionados a uma funcionalidade ou página específica do DemoQA.
+  * Exemplo: `describe("Sortable DemoQA", () => { ... })` define todos os testes relacionados à ordenação de elementos.
+
+* **`beforeEach`**:
+
+  * Executado antes de cada `it`.
+  * Usado para **visitar a página principal** e **navegar até a seção desejada**, garantindo que cada teste comece em um estado consistente.
+
+* **`it`**:
+
+  * Define um teste individual, validando uma funcionalidade específica.
+  * Exemplo: validar se elementos estão ordenados corretamente, se botões funcionam ou se componentes estão visíveis.
+
+* **Page Actions**:
+
+  * São funções que representam **ações do usuário na página**, como clicar, arrastar ou preencher campos.
+  * Promovem **reuso de código e clareza**, evitando duplicação de comandos dentro dos testes.
+
+## Conclusão
+
+* Os testes demonstram a capacidade de **automatizar interações básicas** no site DemoQA, mesmo em **ambiente instável**.
+* Problemas como erros JS, anúncios e selectores dinâmicos podem gerar **flakiness** nos testes.
