@@ -1,5 +1,6 @@
 import * as sel from "../support/selectors/ui/pratice-form/pratice_form";
 import * as el from "../support/selectors/ui/pratice-form/fake_data";
+import * as selectors from "../support/selectors/ui/elements-table/elements-table";
 
 Cypress.Commands.add("fillPracticeForm", () => {
   cy.get(sel.firstName).should("be.visible").type(el.firstName);
@@ -25,9 +26,9 @@ Cypress.Commands.add("fillPracticeForm", () => {
   cy.get(sel.currentAddress).should("be.visible").type(el.address);
 
   cy.get(sel.state).should("be.visible").click();
-  cy.get("#state").find("input").type("NCR{enter}", ); 
+  cy.get("#state").find("input").type("NCR{enter}");
 
-  cy.get(sel.city).should("be.visible").click(); 
+  cy.get(sel.city).should("be.visible").click();
 
   cy.get(sel.city).type("Delhi{enter}");
 
@@ -35,8 +36,21 @@ Cypress.Commands.add("fillPracticeForm", () => {
   cy.get(sel.submit).should("be.visible").click();
 });
 
-
 Cypress.Commands.add("validateUrl", () => {
-    cy.visit("https://demoqa.com");
-    cy.url().should("include", "demoqa");
-})
+  cy.visit("https://demoqa.com");
+  cy.url().should("include", "demoqa");
+});
+
+Cypress.Commands.add("fillTheForms", () => {
+  cy.get(selectors.addNewRecordButton).should("be.visible").click();
+  cy.get(selectors.firstName).should("be.visible").type("João");
+  cy.get(selectors.lastName).should("be.visible").type("Silva");
+  cy.get(selectors.userEmail).should("be.visible").type("joao.silva@example.com");
+  cy.get(selectors.age).should("be.visible").type("30");
+  cy.get(selectors.salary).should("be.visible").type("5000");
+  cy.get(selectors.department).should("be.visible").type("TI");
+  cy.get(selectors.submitButton).should("be.visible").click();
+
+  cy.contains("João").should("be.visible");
+});
+
